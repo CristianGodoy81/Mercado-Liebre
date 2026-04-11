@@ -1,28 +1,58 @@
 import { useRouter } from 'expo-router';
-import React, { useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, Alert, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { MLChip } from '@/components/ui/MLChip';
 import { MLInput } from '@/components/ui/MLInput';
 import { MLProductCard, Product } from '@/components/ui/MLProductCard';
 import { Colors, Metrics, Typography } from '@/constants/theme';
+import { supabase } from '@/utils/supabase';
 
 const CATEGORIES = ['Todos', 'Tecnología', 'Ropa', 'Hogar', 'Deportes', 'Vehículos'];
-
-// Mock temporal, luego lo conectaremos a Supabase
-const MOCK_PRODUCTS: Product[] = [
-  { id: '1', title: 'iPhone 13 Pro 128GB - Como nuevo', price: 950000, imageUrl: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=600&auto=format&fit=crop' },
-  { id: '2', title: 'MacBook Air M1 256GB Space Gray', price: 1250000, imageUrl: 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=600&auto=format&fit=crop' },
-  { id: '3', title: 'Silla Gamer DXRacer Blanca/Rosa', price: 210000, imageUrl: 'https://images.unsplash.com/photo-1598550476439-6847785fcea6?q=80&w=600&auto=format&fit=crop' },
-  { id: '4', title: 'Auriculares Sony WH-1000XM4 Noise Cancelling', price: 340000, imageUrl: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?q=80&w=600&auto=format&fit=crop' },
-  { id: '5', title: 'PlayStation 5 con 2 Joysticks y Garantía', price: 890000, imageUrl: 'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?q=80&w=600&auto=format&fit=crop' },
-];
 
 export default function HomeScreen() {
   const router = useRouter();
   const [activeCategory, setActiveCategory] = useState('Todos');
   const [searchQuery, setSearchQuery] = useState('');
+  
+  const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Función para obtener productos de Supabase
+  const fetchProducts = async () => {
+    setIsLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        throw error;
+      }
+
+      if (data) {
+        // Mapeamos los datos de supabase para asegurarnos que se ajustan al tipo Product
+        const formattedProducts = data.map((item: any) => ({
+          id: item.id,
+          title: item.title,
+          price: item.price,
+          description: item.description,
+          imageUrl: item.image_url || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop', // Imagen por defecto si no tiene
+        }));
+        setProducts(formattedProducts);
+      }
+    } catch (error: any) {
+      Alert.alert('Error', 'No se pudieron cargar los productos: ' + error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
@@ -62,16 +92,22 @@ export default function HomeScreen() {
         <View style={styles.gridContainer}>
           <Text style={styles.sectionTitle}>Recomendados para vos</Text>
           
-          <View style={styles.grid}>
-            {MOCK_PRODUCTS.map(item => (
-              <View key={item.id} style={styles.gridItem}>
-                <MLProductCard 
-                  product={item} 
-                  onPress={() => router.push(`/product/${item.id}`)}
-                />
-              </View>
-            ))}
-          </View>
+          {isLoading ? (
+            <ActivityIndicator size="large" color={Colors.primary} style={{ marginTop: 40 }} />
+          ) : products.length === 0 ? (
+            <Text style={{ color: Colors.onSurfaceVariant, padding: 20 }}>Aún no hay productos publicados.</Text>
+          ) : (
+            <View style={styles.grid}>
+              {products.map(item => (
+                <View key={item.id} style={styles.gridItem}>
+                  <MLProductCard 
+                    product={item} 
+                    onPress={() => router.push(`/product/${item.id}`)}
+                  />
+                </View>
+              ))}
+            </View>
+          )}
         </View>
 
       </ScrollView>

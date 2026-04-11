@@ -31,7 +31,15 @@ export function MLButton({ title, variant = 'primary', style, ...props }: MLButt
 
   // Primary variant (Default)
   return (
-    <TouchableOpacity activeOpacity={0.8} style={[styles.primaryContainer, style]} {...props}>
+    <TouchableOpacity 
+      activeOpacity={0.8} 
+      style={[
+        styles.primaryContainer, 
+        props.disabled && { opacity: 0.5 }, // Indicador visual de desactivado
+        style
+      ]} 
+      {...props}
+    >
       <LinearGradient
         colors={[Colors.primary, Colors.primaryDim]}
         start={{ x: 0, y: 0 }}
