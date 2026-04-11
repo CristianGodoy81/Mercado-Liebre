@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detalle del Producto | Vanguardia Digital</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#0e0e10",
+                    "secondary-fixed-dim": "#ceb9ff",
+                    "surface-bright": "#2c2c2f",
+                    "on-tertiary-container": "#00213e",
+                    "outline": "#767578",
+                    "tertiary-fixed-dim": "#51a7fe",
+                    "primary-fixed-dim": "#00deec",
+                    "on-tertiary-fixed": "#001930",
+                    "surface-container-low": "#131316",
+                    "secondary": "#ac89ff",
+                    "on-secondary-container": "#f8f1ff",
+                    "on-error-container": "#ffa8a3",
+                    "on-secondary": "#290067",
+                    "surface-container-highest": "#262529",
+                    "secondary-container": "#7000ff",
+                    "surface-container-lowest": "#000000",
+                    "error-container": "#9f0519",
+                    "on-tertiary": "#002e52",
+                    "primary-dim": "#00deec",
+                    "on-background": "#fffbfe",
+                    "error-dim": "#d7383b",
+                    "on-primary-fixed": "#003f43",
+                    "on-surface": "#fffbfe",
+                    "surface-tint": "#8ff5ff",
+                    "secondary-fixed": "#dac9ff",
+                    "tertiary-fixed": "#72b5ff",
+                    "tertiary": "#65afff",
+                    "outline-variant": "#48474a",
+                    "error": "#ff716c",
+                    "inverse-primary": "#006a71",
+                    "on-tertiary-fixed-variant": "#003b68",
+                    "surface-dim": "#0e0e10",
+                    "primary-container": "#00eefc",
+                    "on-secondary-fixed-variant": "#6300e2",
+                    "on-surface-variant": "#adaaad",
+                    "surface-variant": "#262529",
+                    "on-secondary-fixed": "#41009a",
+                    "on-primary": "#005d63",
+                    "inverse-on-surface": "#565457",
+                    "secondary-dim": "#874cff",
+                    "inverse-surface": "#fcf8fb",
+                    "primary": "#8ff5ff",
+                    "surface-container-high": "#1f1f22",
+                    "tertiary-dim": "#4aa2f9",
+                    "tertiary-container": "#4aa2f9",
+                    "on-error": "#490006",
+                    "on-primary-container": "#005359",
+                    "surface-container": "#19191c",
+                    "background": "#0e0e10",
+                    "on-primary-fixed-variant": "#005e64",
+                    "primary-fixed": "#00eefc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            backdrop-filter: blur(20px);
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(143, 245, 255, 0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30 min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between h-14 bg-zinc-950/40 backdrop-blur-xl text-cyan-400 font-manrope text-sm tracking-wide rounded-full mt-4 mx-4 px-2 border border-cyan-400/20 shadow-[0_0_15px_rgba(0,240,255,0.1)]">
+<div class="flex items-center gap-3 pl-2">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20">
+<img alt="Foto de perfil de usuario" class="w-full h-full object-cover" data-alt="close-up portrait of a professional man with friendly expression in soft studio lighting with a neutral dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGGSvztJq1VCAJigTOxjio4VNa_dz7-Y6CWNUtcE_FwloQ3dRDbgA7dm5M7LCSvBpdOIDaHtAsqOBVnBfWc6Gyk6NyZj3TCyrVpKh2vXVRMFAnYtdKCSGmGj20N8xc4w9euAqcjjXgl6oXIOkXVUzDeLVgL6ae4JZ3Dxx3PtJab68sbWRem_wa5GcWL71-NrdsuzCBVcn5eBO-7lKvE9yhQzQ5PSF1dkznypRgP4cUdKvWWFT5G_07I8c0WMYwVTYm7hKZNm0w7OvZ"/>
+</div>
+<span class="text-zinc-100 font-bold text-lg">¿Qué estás buscando?</span>
+</div>
+<div class="flex items-center pr-2">
+<button class="p-2 transition-all duration-300 ease-in-out active:scale-95 hover:bg-zinc-800/50 rounded-full">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</header>
+<main class="relative">
+<!-- Hero Product Image -->
+<div class="relative w-full h-[530px] overflow-hidden">
+<img alt="Producto Premium" class="w-full h-full object-cover" data-alt="high-end sleek over-ear wireless headphones in matte black finish resting on a dark reflective surface with dramatic teal neon backlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANC8xPVHs9-y8k423eIuJ1Qt_DQ7iD5ZC6aumaE7yEyWnhITHKSprfH_PkfmF9jplcMs2TVdQTngxYJ4y_Hxi8EJ46zkMD_rjgsDi4C2w6DcCalQUFaj_Ei9tisYMA93044kaPrkcHkd_BVQwpG2bkZVAqebCcoPmMVOSmBrdWc1jH7f77I27K9t8RZgYyHrr0r1VEWFmSl_b29wmruCmSxtU5Y1A4EPxYkhRiJpsrcvw_03zn1oQoi9a0zIzi2PrjQrbmqyyHiqUz"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<!-- Floating Navigation Controls -->
+<div class="absolute top-20 left-6 flex flex-col gap-4">
+<button class="w-10 h-10 rounded-full bg-surface-container-highest/60 backdrop-blur-md flex items-center justify-center border border-outline-variant/30 transition-all active:scale-90">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+</div>
+<div class="absolute top-20 right-6 flex flex-col gap-4">
+<button class="w-10 h-10 rounded-full bg-surface-container-highest/60 backdrop-blur-md flex items-center justify-center border border-outline-variant/30 transition-all active:scale-90">
+<span class="material-symbols-outlined text-on-surface">favorite</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest/60 backdrop-blur-md flex items-center justify-center border border-outline-variant/30 transition-all active:scale-90">
+<span class="material-symbols-outlined text-on-surface">share</span>
+</button>
+</div>
+</div>
+<!-- Product Content Canvas -->
+<div class="px-6 -mt-16 relative z-10">
+<!-- Price and Badge Bento -->
+<div class="flex items-end justify-between mb-8">
+<div class="flex flex-col">
+<span class="text-primary font-headline text-sm font-bold tracking-widest uppercase mb-1">Tecnología de Punta</span>
+<h1 class="text-3xl font-headline font-extrabold text-on-surface leading-tight tracking-tight">Audio Master Pro X</h1>
+</div>
+<div class="bg-surface-container-high px-4 py-2 rounded-2xl border border-primary/10">
+<span class="text-2xl font-headline font-bold text-primary">$45.999</span>
+</div>
+</div>
+<!-- Description & Specs Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Main Info Card -->
+<div class="bg-surface-container-low rounded-[32px] p-6 border border-outline-variant/10">
+<h2 class="font-headline text-lg font-bold mb-4 text-secondary">Descripción</h2>
+<p class="text-on-surface-variant leading-relaxed text-sm">
+                        Experimentá la profundidad sonora definitiva con cancelación de ruido activa inteligente. Diseñados para profesionales que no aceptan menos que la perfección acústica. La tecnología de transductores líquidos ofrece bajos precisos y agudos cristalinos.
+                    </p>
+<div class="mt-6 flex flex-wrap gap-2">
+<span class="bg-surface-container-highest px-3 py-1.5 rounded-full text-[10px] font-bold text-primary-fixed uppercase tracking-wider border border-primary/10">Bluetooth 5.3</span>
+<span class="bg-surface-container-highest px-3 py-1.5 rounded-full text-[10px] font-bold text-primary-fixed uppercase tracking-wider border border-primary/10">40h Batería</span>
+<span class="bg-surface-container-highest px-3 py-1.5 rounded-full text-[10px] font-bold text-primary-fixed uppercase tracking-wider border border-primary/10">Hi-Res Audio</span>
+</div>
+</div>
+<!-- Seller Info & Stats -->
+<div class="bg-surface-container-low rounded-[32px] p-6 border border-outline-variant/10 flex flex-col justify-between">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-2xl bg-secondary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface">Vanguardia Tech</p>
+<p class="text-xs text-on-surface-variant">Vendedor Platinum • 4.9★</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Ubicación</span>
+<span class="text-on-surface font-medium">Palermo, CABA</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Envío</span>
+<span class="text-primary font-medium">Gratis a todo el país</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface-variant">Garantía</span>
+<span class="text-on-surface font-medium">12 meses oficial</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Call to Action Section -->
+<div class="mt-10">
+<button class="w-full py-5 rounded-2xl bg-gradient-to-r from-primary to-primary-dim text-on-primary font-headline font-extrabold text-lg tracking-wider transition-all duration-300 active:scale-[0.98] shadow-[0_0_30px_rgba(143,245,255,0.25)] flex items-center justify-center gap-3">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+                    Contactar al vendedor
+                </button>
+<p class="text-center text-on-surface-variant text-xs mt-4">Típicamente responde en menos de 10 minutos</p>
+</div>
+<!-- More from this category horizontal scroll -->
+<section class="mt-12">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline font-bold text-xl">Relacionados</h3>
+<button class="text-primary text-sm font-bold">Ver todos</button>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-6 scrollbar-hide">
+<!-- Item 1 -->
+<div class="min-w-[160px] bg-surface-container-low rounded-2xl p-3 border border-outline-variant/10">
+<div class="aspect-square rounded-xl overflow-hidden mb-3">
+<img class="w-full h-full object-cover" data-alt="minimalist white portable bluetooth speaker on a dark wood table with blue ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfhnLVnFA16MOHCW3cyzxmuK8aaEkfC0hf9IEZecirLgsMcgpuLmtSlcB8RbCCXYFGkKmKeJq7ertb3-6hXgRrrAWxytDl0P-5_FyCesjSzx1mUOJYRjKnk3Af0FNIhfBUpnGocUWD7UoeOtPVe7DCRORlIrmIboWECrNh9h1AnF9rDvelUemCjv_-hmIVpjRSfplurtnvI6QUPhdXXn1WDxHn59hZAx3p2edwtAbJKC4yE2_gb1o1PMRm1G7avPKy8NwkA2IWE5mK"/>
+</div>
+<p class="text-xs font-bold truncate">Acoustic Pod S1</p>
+<p class="text-primary text-sm font-bold mt-1">$12.500</p>
+</div>
+<!-- Item 2 -->
+<div class="min-w-[160px] bg-surface-container-low rounded-2xl p-3 border border-outline-variant/10">
+<div class="aspect-square rounded-xl overflow-hidden mb-3">
+<img class="w-full h-full object-cover" data-alt="close-up of elegant wireless earbuds in their charging case under cool studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRwbBSZ-groQWwJKVt4bAhGvnaXovFqBDF2fhWl0D13xXaDeEPRA7Upzuoy7E5fPMIAN9KBJ_cpCBf1XVo_jQ4NfW0ZpzS3ncD5ACWWfspENuaGmXpUs2IcFfoZyqcjtIcvvvBI5_wrORBe1nHj_dOi2jpNsGRbR2msS9ZJDRxpmjI4oEwRdZrGs6zKvroqGUeynV0yRoc06aDiF6FMmOISYmVsY_uDZcGIOju-7DZPUCGEj0Dhgklgw7orBh-fWo6BM5XDb-ZJIjK"/>
+</div>
+<p class="text-xs font-bold truncate">Sonic Buds Gen2</p>
+<p class="text-primary text-sm font-bold mt-1">$21.900</p>
+</div>
+<!-- Item 3 -->
+<div class="min-w-[160px] bg-surface-container-low rounded-2xl p-3 border border-outline-variant/10">
+<div class="aspect-square rounded-xl overflow-hidden mb-3">
+<img class="w-full h-full object-cover" data-alt="professional condenser microphone with pop filter in a dark podcast studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCikMN0LSYlsUPxxR5EZOKu7xkpUXGlw72rNuAY17qvDiWF7LbTAjSbCQRFHqY2OeYp4Fwng8S_8xiizWTK2FtiDLILPcbbMIqUIw7TwWvRTkbaQXc7sr97ejYcrs2F8M4-2nDnqV_wk4UnWw7i-9M-C5WqBQJKweTsZmkUxHzTKBPIHjJvjvrlll20iajp8k_viMSj9JgNvT3iqk-BSMQeLpxTpkKUKgMNsjWcJLluJ4KgFhaEpuor_HKH3iEe4oU0lgNMHXSy2v6k"/>
+</div>
+<p class="text-xs font-bold truncate">Vocal Master USB</p>
+<p class="text-primary text-sm font-bold mt-1">$35.000</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 pb-8 pt-4 bg-zinc-950/60 backdrop-blur-2xl border-t border-cyan-400/10 shadow-[0_-8px_30px_rgba(0,0,0,0.5)] rounded-t-[32px]">
+<button class="text-zinc-400 p-3 hover:text-cyan-300 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">home</span>
+</button>
+<button class="text-zinc-400 p-3 hover:text-cyan-300 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="bg-cyan-400/10 text-cyan-400 rounded-2xl p-3 shadow-[0_0_10px_rgba(0,240,255,0.3)] active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<button class="text-zinc-400 p-3 hover:text-cyan-300 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+<button class="text-zinc-400 p-3 hover:text-cyan-300 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">person</span>
+</button>
+</nav>
+</body></html>

@@ -38,11 +38,20 @@
             "backgroundColor": "#000000"
           }
         }
-      ]
+      ],
+      "@react-native-google-signin/google-signin",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "a50e9663-a949-4154-a538-6fadf3dd032f"
+      }
+    },
+    "owner": "cristiangodoy81"
   }
 }

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#0e0e10",
+                    "secondary-fixed-dim": "#ceb9ff",
+                    "surface-bright": "#2c2c2f",
+                    "on-tertiary-container": "#00213e",
+                    "outline": "#767578",
+                    "tertiary-fixed-dim": "#51a7fe",
+                    "primary-fixed-dim": "#00deec",
+                    "on-tertiary-fixed": "#001930",
+                    "surface-container-low": "#131316",
+                    "secondary": "#ac89ff",
+                    "on-secondary-container": "#f8f1ff",
+                    "on-error-container": "#ffa8a3",
+                    "on-secondary": "#290067",
+                    "surface-container-highest": "#262529",
+                    "secondary-container": "#7000ff",
+                    "surface-container-lowest": "#000000",
+                    "error-container": "#9f0519",
+                    "on-tertiary": "#002e52",
+                    "primary-dim": "#00deec",
+                    "on-background": "#fffbfe",
+                    "error-dim": "#d7383b",
+                    "on-primary-fixed": "#003f43",
+                    "on-surface": "#fffbfe",
+                    "surface-tint": "#8ff5ff",
+                    "secondary-fixed": "#dac9ff",
+                    "tertiary-fixed": "#72b5ff",
+                    "tertiary": "#65afff",
+                    "outline-variant": "#48474a",
+                    "error": "#ff716c",
+                    "inverse-primary": "#006a71",
+                    "on-tertiary-fixed-variant": "#003b68",
+                    "surface-dim": "#0e0e10",
+                    "primary-container": "#00eefc",
+                    "on-secondary-fixed-variant": "#6300e2",
+                    "on-surface-variant": "#adaaad",
+                    "surface-variant": "#262529",
+                    "on-secondary-fixed": "#41009a",
+                    "on-primary": "#005d63",
+                    "inverse-on-surface": "#565457",
+                    "secondary-dim": "#874cff",
+                    "inverse-surface": "#fcf8fb",
+                    "primary": "#8ff5ff",
+                    "surface-container-high": "#1f1f22",
+                    "tertiary-dim": "#4aa2f9",
+                    "tertiary-container": "#4aa2f9",
+                    "on-error": "#490006",
+                    "on-primary-container": "#005359",
+                    "surface-container": "#19191c",
+                    "background": "#0e0e10",
+                    "on-primary-fixed-variant": "#005e64",
+                    "primary-fixed": "#00eefc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-hero {
+            background: linear-gradient(135deg, rgba(143, 245, 255, 0.05) 0%, rgba(172, 137, 255, 0.05) 100%);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body min-h-screen selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between h-14 bg-zinc-950/40 backdrop-blur-xl rounded-full mt-4 mx-4 px-2 border border-cyan-400/20 shadow-[0_0_15px_rgba(0,240,255,0.1)] transition-all duration-300 ease-in-out">
+<div class="flex items-center gap-3 pl-2">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20">
+<img alt="Foto de perfil de usuario" class="w-full h-full object-cover" data-alt="Close-up portrait of a professional man with a friendly expression, soft studio lighting, cinematic dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_NiN2oxpCNwvZC0H2lXRwD6S2h-Jyya0AuLvW5qxHXsAfxaDaDcPIDc1dGETA_on2s3DUao8K3upuB2YTY-2cBR6MDfWlhrfUPIodW5IELJIU6ezs3Ac87QMTluSvmcekEiwmdhblcGuWMYiGghg3bPx9-wq4RjzyYsKRD9C-pJssRvUSOEZeVtGH3NjTQY2ojHqxGWSK8HXAwTzuBqzbC43kKPP8SGcXMELejoy3iVOOBCxlPHg1Sq9leHOWFvLo6Jj_1U3D4Ypn"/>
+</div>
+<span class="text-lg font-bold text-zinc-100 font-headline tracking-tight">Market<span class="text-primary">X</span></span>
+</div>
+<h1 class="font-manrope text-sm tracking-wide text-zinc-500 absolute left-1/2 -translate-x-1/2 hidden md:block">¿Qué estás buscando?</h1>
+<div class="flex items-center gap-1 pr-1">
+<button class="p-2 text-cyan-400 hover:bg-zinc-800/50 rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="relative flex flex-col items-center justify-center min-h-screen px-6 pt-20 pb-32 overflow-hidden">
+<!-- Ambient Glow Backgrounds -->
+<div class="absolute top-1/4 -left-20 w-80 h-80 bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-1/4 -right-20 w-80 h-80 bg-secondary/10 rounded-full blur-[120px]"></div>
+<!-- Hero Section -->
+<div class="relative z-10 w-full max-w-lg">
+<div class="glass-hero p-8 md:p-12 rounded-[40px] border border-outline-variant/10 shadow-2xl text-center space-y-8">
+<div class="space-y-4">
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.1] text-on-surface">
+                        Hola, ¿qué vas a <span class="text-primary">comprar</span> o <span class="text-secondary">vender</span> hoy?
+                    </h2>
+<p class="text-on-surface-variant text-lg font-medium">Encontrá lo que buscás en la vanguardia digital.</p>
+</div>
+<!-- Action Blocks (Asymmetric) -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex flex-col items-center justify-center gap-3 p-6 bg-primary rounded-3xl group transition-all duration-300 active:scale-95 shadow-[0_10px_30px_rgba(143,245,255,0.2)]">
+<span class="material-symbols-outlined text-on-primary text-3xl">shopping_basket</span>
+<span class="text-on-primary font-bold tracking-tight">Comprar</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-3 p-6 bg-surface-container-highest/50 backdrop-blur-md border border-secondary/30 rounded-3xl group transition-all duration-300 active:scale-95 hover:border-secondary shadow-lg">
+<span class="material-symbols-outlined text-secondary text-3xl">sell</span>
+<span class="text-secondary font-bold tracking-tight">Vender</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Trending Bento (Subtle Background Content) -->
+<div class="mt-16 w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6 opacity-80">
+<div class="md:col-span-2 group relative overflow-hidden rounded-[32px] bg-surface-container-low border border-outline-variant/10 aspect-video md:aspect-auto h-48 transition-all hover:border-primary/30">
+<img alt="Artículos tech" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Luxury high-tech minimalist setup with a sleek laptop and glowing neon desk light in a dark modern room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhWl0NTGhKfUGmQgfUVdBicWF_Eec3qPV525fd9RuSahiNQj3VUKJYB8_VEIxz_EWpx8-VhggyiXJuqMAfnx-mNp4IuKmB8cOOLQtTA4QxktkUXh8RFyOhDGHHiefeJih4vLF2Ztf46S6i96V7Zqm4wAGhYShQcsRoQYsuTM55fxkBUp6JYGI4KjSnGeT0Qm4A_BhRgSKq_yTEi3TYwVGB0ivSdTfMkb7U8-5q-J1b9cnlN55UmGiAv9ufCP9ow6M40AGDzqLTcMGD"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-80"></div>
+<div class="absolute bottom-6 left-6">
+<span class="inline-block px-3 py-1 bg-primary/20 text-primary text-xs font-bold rounded-full mb-2">TENDENCIA</span>
+<h3 class="font-headline font-bold text-xl">Lo último en Tech</h3>
+</div>
+</div>
+<div class="group relative overflow-hidden rounded-[32px] bg-surface-container-low border border-outline-variant/10 h-48 transition-all hover:border-secondary/30">
+<img alt="Zapatillas urbanas" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Exclusive designer sneakers displayed in a dark room with a single sharp cyan spotlight highlighting the texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRbwFTfedIRdeAKXg8TVHzDiP1DbnCwU9iyfG3qv2gvcsCpbA8JywIT1lqeW5z4SCnElfYcBNdLPYxQlaWT5NOJfAPoR8ke-wvUmETE7Sdd9wpHzq3Os3YZAUzzAcxma3jyR4anLEiXRRoSYyuCpVKeJwitIW2sWB58VVxVK_59VO825zxpK4h6OBh4a5GlIV2KbN3c8ln0wmc1OjcqJCgztNQCD1ymw1mBEfDSX3P5tnev5rrMOIBiAsm5Wno_TEtaf0mQwQSOT8W"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-80"></div>
+<div class="absolute bottom-6 left-6">
+<h3 class="font-headline font-bold text-xl">Urban Style</h3>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 pb-8 pt-4 bg-zinc-950/60 backdrop-blur-2xl rounded-t-[32px] border-t border-cyan-400/10 shadow-[0_-8px_30px_rgba(0,0,0,0.5)]">
+<a class="bg-cyan-400/10 text-cyan-400 rounded-2xl p-3 shadow-[0_0_10px_rgba(0,240,255,0.3)] active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a class="text-zinc-400 p-3 hover:text-cyan-300 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">search</span>
+</a>
+<a class="text-zinc-400 p-3 hover:text-cyan-300 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+</a>
+<a class="text-zinc-400 p-3 hover:text-cyan-300 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+</a>
+<a class="text-zinc-400 p-3 hover:text-cyan-300 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+</a>
+</nav>
+</body></html>

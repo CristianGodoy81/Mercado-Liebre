@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#0e0e10",
+                    "secondary-fixed-dim": "#ceb9ff",
+                    "surface-bright": "#2c2c2f",
+                    "on-tertiary-container": "#00213e",
+                    "outline": "#767578",
+                    "tertiary-fixed-dim": "#51a7fe",
+                    "primary-fixed-dim": "#00deec",
+                    "on-tertiary-fixed": "#001930",
+                    "surface-container-low": "#131316",
+                    "secondary": "#ac89ff",
+                    "on-secondary-container": "#f8f1ff",
+                    "on-error-container": "#ffa8a3",
+                    "on-secondary": "#290067",
+                    "surface-container-highest": "#262529",
+                    "secondary-container": "#7000ff",
+                    "surface-container-lowest": "#000000",
+                    "error-container": "#9f0519",
+                    "on-tertiary": "#002e52",
+                    "primary-dim": "#00deec",
+                    "on-background": "#fffbfe",
+                    "error-dim": "#d7383b",
+                    "on-primary-fixed": "#003f43",
+                    "on-surface": "#fffbfe",
+                    "surface-tint": "#8ff5ff",
+                    "secondary-fixed": "#dac9ff",
+                    "tertiary-fixed": "#72b5ff",
+                    "tertiary": "#65afff",
+                    "outline-variant": "#48474a",
+                    "error": "#ff716c",
+                    "inverse-primary": "#006a71",
+                    "on-tertiary-fixed-variant": "#003b68",
+                    "surface-dim": "#0e0e10",
+                    "primary-container": "#00eefc",
+                    "on-secondary-fixed-variant": "#6300e2",
+                    "on-surface-variant": "#adaaad",
+                    "surface-variant": "#262529",
+                    "on-secondary-fixed": "#41009a",
+                    "on-primary": "#005d63",
+                    "inverse-on-surface": "#565457",
+                    "secondary-dim": "#874cff",
+                    "inverse-surface": "#fcf8fb",
+                    "primary": "#8ff5ff",
+                    "surface-container-high": "#1f1f22",
+                    "tertiary-dim": "#4aa2f9",
+                    "tertiary-container": "#4aa2f9",
+                    "on-error": "#490006",
+                    "on-primary-container": "#005359",
+                    "surface-container": "#19191c",
+                    "background": "#0e0e10",
+                    "on-primary-fixed-variant": "#005e64",
+                    "primary-fixed": "#00eefc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(38, 37, 41, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(143, 245, 255, 0.15);
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(143, 245, 255, 0.1);
+        }
+        body {
+            background-color: #0e0e10;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between h-14 bg-zinc-950/40 backdrop-blur-xl rounded-full mt-4 mx-4 px-2 border border-cyan-400/20 shadow-[0_0_15px_rgba(0,240,255,0.1)]">
+<div class="flex items-center gap-3 pl-2">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/30">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="portrait of a young professional man with a friendly expression in a modern office setting with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA2gixuyyWWmX_PkoWmr-j_v0eiji0gI0bVeyMmLE4nVrE9HulFwHQckmpqnTlLXUUVsQxsnH_LvuJTSurZ-tZLDE97NJkSqA-n62dUxSjq-AABA1yRPp4g77QIMIBIIJGwIxW1rHC3oUSzMCqCCmvotbSpNr4uzS2GBE3KM3OmNWSu0_KDxVnEO1KCVRwdprEXeXv1tV6an386eYzeYjl4EXsJ0gZ2JfWWdYS9c4dZ65-UCxsRss4WR53WFf4Jm-7OxzX9tde7qWk"/>
+</div>
+<span class="font-headline text-sm tracking-wide text-zinc-100 font-bold">¿Qué estás buscando?</span>
+</div>
+<div class="flex items-center gap-2 pr-2">
+<button class="p-2 text-cyan-400 hover:bg-zinc-800/50 transition-all duration-300 ease-in-out active:scale-95 rounded-full">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</nav>
+<main class="pt-24 px-4">
+<!-- Results Header -->
+<header class="mb-6 flex justify-between items-end">
+<div>
+<p class="text-primary text-xs font-label uppercase tracking-widest mb-1">Resultados</p>
+<h1 class="font-headline text-2xl font-extrabold text-on-surface">Zapatillas Urbanas</h1>
+</div>
+<button class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-sm">tune</span>
+<span class="text-xs font-medium">Filtrar</span>
+</button>
+</header>
+<!-- Product Grid (Two Columns) -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Product Card 1 -->
+<div class="glass-card neon-glow rounded-[24px] overflow-hidden flex flex-col transition-all duration-300 active:scale-[0.98]">
+<div class="aspect-square relative overflow-hidden">
+<img alt="Producto" class="w-full h-full object-cover" data-alt="sleek modern aesthetic sneakers in white and teal neon colors isolated on a dark reflective surface with moody blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1LPhK0yK381xs2_K_EQvYXyo95CeGUzkVptl0mkRUyAIBxbYuRTTZpvgkjkALzexK5ovDL56-uXfatE3pTJsfTi-McxnjyBzx3AlOncVNDrmrW6xYlvNAKC8-6p5Lql-gUHf-KgS-LvjH52TEDesnWrRdWzriYjZ3ajqdsbaglvsFHXXxsEGy8G7mVhq7Vu79-Gysxvwa3vVSZr9RXzjdTB33zkIcbN_FbX9l5izlEJCqZidSISTvREWvWreXSOG8YLriBx474KqY"/>
+<div class="absolute top-2 right-2 bg-zinc-950/60 backdrop-blur-md px-2 py-1 rounded-full">
+<span class="text-[10px] font-bold text-primary">NUEVO</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="text-xl font-headline font-extrabold text-primary mb-1">$ 84.900</span>
+<h3 class="text-sm font-semibold text-on-surface leading-tight mb-1">Neon Runner V1</h3>
+<p class="text-xs text-on-surface-variant line-clamp-2 leading-relaxed">Zapatillas urbanas con tecnología de amortiguación líquida.</p>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="glass-card neon-glow rounded-[24px] overflow-hidden flex flex-col transition-all duration-300 active:scale-[0.98]">
+<div class="aspect-square relative overflow-hidden">
+<img alt="Producto" class="w-full h-full object-cover" data-alt="high-end green sports shoe on a dark textured background with subtle green neon glow and atmospheric fog effect" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0Hrgo8_V922RhY1fONYwWmF2ESttIE9xkpmu7f5OtZu5gEgQPp9XrRwjuolhxaXaC4SZJF2hjKCcpOTwnLqVjk3_TdPvwIamQsI68z_7YZ7FVZ1Gu-3r12xmYx4F96U73NEVn66dks1JQkdvLzZ5lnBR5RfqOb0OX1zlt0AI4vekYgzPm787paiD_Y0relRJYlb_EtdNka7u00sxMt9-rgdZO0AUHLK5I57yKlRobmnjZieV5K5axrAxVP6JOGnGbyDrYkgNEI5ks"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="text-xl font-headline font-extrabold text-primary mb-1">$ 92.500</span>
+<h3 class="text-sm font-semibold text-on-surface leading-tight mb-1">Cyber Glide Pro</h3>
+<p class="text-xs text-on-surface-variant line-clamp-2 leading-relaxed">Diseño aerodinámico para máxima velocidad en la ciudad.</p>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="glass-card neon-glow rounded-[24px] overflow-hidden flex flex-col transition-all duration-300 active:scale-[0.98]">
+<div class="aspect-square relative overflow-hidden">
+<img alt="Producto" class="w-full h-full object-cover" data-alt="classic leather urban boots in brown and black with premium texture detail and soft cinematic side lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBQYEpJDSyUXJudDif0ANAtSKdxfnSz2O5xu-azoAbRPgkhX4yVoPkiCqr367Td4a_kLzrxScBQ1Vfugcz6mYg9VbQWrvW5gwazUY2FWNs6IHt1qMrTtkdQmQgTFintixGTCBE0kQ1vFY__ufWsSLrQ86KrfASTP2C-ZxcTx0EVgJs-NPyf9tyt15oE5hOY12aQQ4TEN5G5J5z7lNVS3ViXvTjgjsBEvmODepK3mhsqmtNwNZWBv7775TdrOXaPPGryAiqOJ5sTnkZ"/>
+<div class="absolute top-2 right-2 bg-secondary/80 px-2 py-1 rounded-full">
+<span class="text-[10px] font-bold text-on-secondary">PROMO</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="text-xl font-headline font-extrabold text-primary mb-1">$ 110.000</span>
+<h3 class="text-sm font-semibold text-on-surface leading-tight mb-1">Urban Nomad Boot</h3>
+<p class="text-xs text-on-surface-variant line-clamp-2 leading-relaxed">Cuero premium resistente al agua para climas extremos.</p>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="glass-card neon-glow rounded-[24px] overflow-hidden flex flex-col transition-all duration-300 active:scale-[0.98]">
+<div class="aspect-square relative overflow-hidden">
+<img alt="Producto" class="w-full h-full object-cover" data-alt="vibrant colorful sneakers with artistic design patterns on a dark minimalist pedestal with purple ambient light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn5MFkMdxr3nbdygtEXJeWLmx6Z88Vn6QXb783dHWhT2cAB4i3CqQ15kgdT49NOiDSAZgwPKA62FUtosXyw00_yGEjORxAXAELvYtTcPuFhc35KBZ7jdjuxNGDZ-ogOSnzT011omFjl6Z1U-Rzkg7ODyDfwY_UD49hHRLDhJF01azD9MdF2PYSmmSnNn_LYHwHLj26Qic_fo1_hbyrNd9toRP_RQVIMcOSu1Ga0YqemWovfublkKntfHbNIg6sKTO_t7k55SqVKR-u"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="text-xl font-headline font-extrabold text-primary mb-1">$ 78.200</span>
+<h3 class="text-sm font-semibold text-on-surface leading-tight mb-1">Pop Color X</h3>
+<p class="text-xs text-on-surface-variant line-clamp-2 leading-relaxed">Estilo retro-futurista con materiales reciclados.</p>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="glass-card neon-glow rounded-[24px] overflow-hidden flex flex-col transition-all duration-300 active:scale-[0.98]">
+<div class="aspect-square relative overflow-hidden">
+<img alt="Producto" class="w-full h-full object-cover" data-alt="black tactical urban sneakers with carbon fiber details and aggressive sole profile in high contrast lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd7Rx8i4V34Q1yJsdvDwKonxMaF7jU0i0PUEdVQanSEokbnXyckX5rCe9pU0vGQeVWZJHgukPJ-2bFOhDje4ORlyCg4PbJYvfKC1500H1U9wg1ZzT7N8YU-KtntaA5eC5MMHuo3OtZezYDVI1BtDYD2j9pJxix5J1XzLwtW816gsAtGaQYxffO7Je_SlpDbGf5_MGOht-vgumWeKN_oONAhzctDJGBtyf14ASmOp2fIk_JVb5h43X_ryN6PjPvgLzYIy1SPlRPkaEW"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="text-xl font-headline font-extrabold text-primary mb-1">$ 125.000</span>
+<h3 class="text-sm font-semibold text-on-surface leading-tight mb-1">Shadow Stealth</h3>
+<p class="text-xs text-on-surface-variant line-clamp-2 leading-relaxed">Máxima discreción y confort para largas jornadas.</p>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="glass-card neon-glow rounded-[24px] overflow-hidden flex flex-col transition-all duration-300 active:scale-[0.98]">
+<div class="aspect-square relative overflow-hidden">
+<img alt="Producto" class="w-full h-full object-cover" data-alt="white minimalist designer sneakers on a marble floor with soft sunlight coming through a window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFyGVR1jzHoUmpflJjkfFaPMkfVCAllQNH0HbamGUheTJvPAEvO_9kgMby6DJDZ3m563qikJ8LUaFpg8NrU4EWPFbuDrUf-BtP5DrQAPHhm67QXY-FYVu3cdjq4-eqFFqixnMWOqnDktMIGbhIc1T21agAWjTMZ0LcPt8v2qtrV2FqO1fuNHPklSCIblCoQ8Z0iZtlXr_BNGO0f4EdgxtgfOxobyZk_vkYti7Yb5FSs1ouzOWKlvy-4VwDsT6qJ7J5ptFSB61Hb1zr"/>
+</div>
+<div class="p-4 flex flex-col flex-grow">
+<span class="text-xl font-headline font-extrabold text-primary mb-1">$ 95.000</span>
+<h3 class="text-sm font-semibold text-on-surface leading-tight mb-1">Pure Zen Low</h3>
+<p class="text-xs text-on-surface-variant line-clamp-2 leading-relaxed">Minimalismo absoluto con materiales premium ultra-soft.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 pb-8 pt-4 bg-zinc-950/60 backdrop-blur-2xl rounded-t-[32px] border-t border-cyan-400/10 shadow-[0_-8px_30px_rgba(0,0,0,0.5)]">
+<button class="text-zinc-400 p-3 hover:text-cyan-300 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">home</span>
+</button>
+<button class="bg-cyan-400/10 text-cyan-400 rounded-2xl p-3 shadow-[0_0_10px_rgba(0,240,255,0.3)] active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-zinc-400 p-3 hover:text-cyan-300 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<button class="text-zinc-400 p-3 hover:text-cyan-300 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+<button class="text-zinc-400 p-3 hover:text-cyan-300 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">person</span>
+</button>
+</nav>
+</body></html>

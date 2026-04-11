@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#0e0e10",
+                    "secondary-fixed-dim": "#ceb9ff",
+                    "surface-bright": "#2c2c2f",
+                    "on-tertiary-container": "#00213e",
+                    "outline": "#767578",
+                    "tertiary-fixed-dim": "#51a7fe",
+                    "primary-fixed-dim": "#00deec",
+                    "on-tertiary-fixed": "#001930",
+                    "surface-container-low": "#131316",
+                    "secondary": "#ac89ff",
+                    "on-secondary-container": "#f8f1ff",
+                    "on-error-container": "#ffa8a3",
+                    "on-secondary": "#290067",
+                    "surface-container-highest": "#262529",
+                    "secondary-container": "#7000ff",
+                    "surface-container-lowest": "#000000",
+                    "error-container": "#9f0519",
+                    "on-tertiary": "#002e52",
+                    "primary-dim": "#00deec",
+                    "on-background": "#fffbfe",
+                    "error-dim": "#d7383b",
+                    "on-primary-fixed": "#003f43",
+                    "on-surface": "#fffbfe",
+                    "surface-tint": "#8ff5ff",
+                    "secondary-fixed": "#dac9ff",
+                    "tertiary-fixed": "#72b5ff",
+                    "tertiary": "#65afff",
+                    "outline-variant": "#48474a",
+                    "error": "#ff716c",
+                    "inverse-primary": "#006a71",
+                    "on-tertiary-fixed-variant": "#003b68",
+                    "surface-dim": "#0e0e10",
+                    "primary-container": "#00eefc",
+                    "on-secondary-fixed-variant": "#6300e2",
+                    "on-surface-variant": "#adaaad",
+                    "surface-variant": "#262529",
+                    "on-secondary-fixed": "#41009a",
+                    "on-primary": "#005d63",
+                    "inverse-on-surface": "#565457",
+                    "secondary-dim": "#874cff",
+                    "inverse-surface": "#fcf8fb",
+                    "primary": "#8ff5ff",
+                    "surface-container-high": "#1f1f22",
+                    "tertiary-dim": "#4aa2f9",
+                    "tertiary-container": "#4aa2f9",
+                    "on-error": "#490006",
+                    "on-primary-container": "#005359",
+                    "surface-container": "#19191c",
+                    "background": "#0e0e10",
+                    "on-primary-fixed-variant": "#005e64",
+                    "primary-fixed": "#00eefc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-bubble-received {
+            background: rgba(38, 37, 41, 0.4);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(143, 245, 255, 0.1);
+            border-left: 1px solid rgba(143, 245, 255, 0.1);
+        }
+        .glass-bubble-sent {
+            background: linear-gradient(135deg, rgba(143, 245, 255, 0.15), rgba(172, 137, 255, 0.1));
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(143, 245, 255, 0.2);
+            border-right: 1px solid rgba(172, 137, 255, 0.2);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow-text {
+            text-shadow: 0 0 10px rgba(143, 245, 255, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between h-14 bg-zinc-950/40 backdrop-blur-xl text-zinc-100 font-headline text-sm tracking-wide rounded-full mt-4 mx-4 px-4 border border-cyan-400/20 shadow-[0_0_15px_rgba(0,240,255,0.1)]">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/30">
+<img alt="Foto de perfil de usuario" class="w-full h-full object-cover" data-alt="Professional headshot of a friendly man with short dark hair and a warm smile, soft studio lighting on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0iP0kqBAV4Tgv73D8AWnkN_cSznBg1LPr7uGclg4m8aGcZnkPKWATdNDr1Q56sAoPdlchmjaMojdf7nktmLKh-Tzss-HenkpnSym85zMM8qtZTQ4SequcKUcaVb_ogQDzBHySLRSxy9eqEr_8G5v42S90iun4yzQj43mCyStce1Cgq3oSwQ5jCwS4wWtOD8goQfXq4YgZHAuiY2DbYaV14qszW9BAPcObu6ERttZ_lBOq6QfFbzDWS0Mu96s03cB7IncO86-akEXm"/>
+</div>
+<div class="flex flex-col">
+<span class="text-zinc-100 font-bold leading-tight">Julián Martínez</span>
+<span class="text-[10px] text-primary/80 uppercase tracking-widest font-semibold">Vendedor Pro</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-zinc-500 hover:bg-zinc-800/50 transition-all duration-300 ease-in-out active:scale-95 rounded-full">
+<span class="material-symbols-outlined" style="font-size: 20px;">call</span>
+</button>
+<button class="p-2 text-cyan-400 hover:bg-zinc-800/50 transition-all duration-300 ease-in-out active:scale-95 rounded-full">
+<span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+</button>
+</div>
+</header>
+<!-- Chat Canvas -->
+<main class="flex-grow pt-24 pb-32 px-4 space-y-6 max-w-2xl mx-auto w-full">
+<!-- Date Indicator -->
+<div class="flex justify-center">
+<span class="text-[11px] font-medium text-on-surface-variant/50 bg-surface-container-low px-3 py-1 rounded-full uppercase tracking-tighter">Hoy</span>
+</div>
+<!-- Received Message -->
+<div class="flex flex-col items-start space-y-1">
+<div class="glass-bubble-received p-4 rounded-2xl rounded-tl-none max-w-[85%] shadow-lg">
+<p class="text-on-surface text-sm leading-relaxed">¡Hola! ¿Cómo estás? Sí, todavía tengo el teclado mecánico disponible. Está impecable, tiene muy poco uso.</p>
+</div>
+<span class="text-[10px] text-on-surface-variant/40 ml-1">14:20</span>
+</div>
+<!-- Sent Message -->
+<div class="flex flex-col items-end space-y-1">
+<div class="glass-bubble-sent p-4 rounded-2xl rounded-tr-none max-w-[85%] shadow-lg">
+<p class="text-on-surface text-sm leading-relaxed">¡Buenísimo! Me interesa. ¿Podría pasar a verlo mañana por la tarde? Estoy por la zona de Palermo.</p>
+</div>
+<div class="flex items-center gap-1 mr-1">
+<span class="text-[10px] text-on-surface-variant/40">14:22</span>
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</div>
+</div>
+<!-- Product Context Card (Bento Style) -->
+<div class="mx-auto w-full max-w-sm">
+<div class="bg-surface-container-low rounded-3xl p-3 border border-outline-variant/10 flex items-center gap-4">
+<div class="w-16 h-16 rounded-2xl overflow-hidden bg-surface-bright">
+<img alt="Producto" class="w-full h-full object-cover opacity-80" data-alt="Modern high-end mechanical gaming keyboard with customizable RGB backlighting on a dark minimalist desk setup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe5st_zLRGvTw654pDcljd0Eje7Noj2pmXC1HT0DbzVay58sIwvzQe0zFgG0YF0_zHwVpnkSNNwyg2ZzwbAOANPl8dUoxIrerhj_lNbvPafu0RXAxOoKriCVaEsBXtFjIhWnCa1X_ylr4DVibJHbcKZK-zyxzektLWuys9QCV4dHKpC_4hqU8ux9Dx4NRmPzyXdFX89t2D_QMSZ8I8D5ipW9oaF78YPD4Yc64LKHn0UqyQWQtqw8tTMWsmxIieKafla8oiAtjqjG67"/>
+</div>
+<div class="flex-grow">
+<h4 class="text-xs font-semibold text-on-surface-variant">Estás preguntando por</h4>
+<p class="text-sm font-headline font-bold text-on-surface">Teclado Mecánico RGB</p>
+<p class="text-primary font-bold text-sm">$45.000</p>
+</div>
+</div>
+</div>
+<!-- Received Message -->
+<div class="flex flex-col items-start space-y-1">
+<div class="glass-bubble-received p-4 rounded-2xl rounded-tl-none max-w-[85%] shadow-lg">
+<p class="text-on-surface text-sm leading-relaxed">Dale, perfecto. Mañana después de las 17hs me viene bárbaro. Te paso la ubicación exacta por acá.</p>
+</div>
+<span class="text-[10px] text-on-surface-variant/40 ml-1">14:25</span>
+</div>
+<!-- Map Location Preview -->
+<div class="flex flex-col items-start space-y-2">
+<div class="w-full max-w-[280px] h-40 rounded-2xl overflow-hidden glass-bubble-received p-1">
+<div class="w-full h-full rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Stylized dark mode digital map showing a specific street location in a modern urban neighborhood" data-location="Palermo, Buenos Aires" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIk7h6QaNFDdpL0pz9HK-CTNbal9vD29haQJhdwXpuK4zEijNPeC4OTRhFHSc9RePKeLbSkl2HlmBBuEqQpEDhMTgd91Q34BFKCCSe5IOMEB_uHdrZqtWV0lsaDYJahPjfmF2ZtmTRKT5Vm3IjaMeUMqzadjv6Nrol1saF2uu3wi6nvdGAVEplqkXJPhX8tz-Q4R-NsV7a0XZhUTeBZcI5efLJTkDaeB7bFHoIIXMT2dDiKLSFa9d9oEdmhmkuSVzzRh2aBh5HH7r3"/>
+<div class="absolute inset-0 bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+</div>
+<span class="text-[10px] text-on-surface-variant/40 ml-1">Ubicación enviada</span>
+</div>
+</main>
+<!-- Bottom Action Area -->
+<div class="fixed bottom-20 left-0 right-0 px-4 pb-4">
+<div class="max-w-2xl mx-auto flex items-end gap-2">
+<div class="flex-grow bg-surface-container-highest/60 backdrop-blur-2xl rounded-[28px] p-2 flex items-center border border-outline-variant/20 shadow-2xl">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<input class="flex-grow bg-transparent border-none focus:ring-0 text-sm py-2 px-1 text-on-surface placeholder:text-on-surface-variant/40" placeholder="Escribí un mensaje..." type="text"/>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">sentiment_satisfied</span>
+</button>
+</div>
+<button class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-dim text-on-primary flex items-center justify-center shadow-[0_0_20px_rgba(143,245,255,0.4)] active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 pb-8 pt-4 bg-zinc-950/60 backdrop-blur-2xl rounded-t-[32px] border-t border-cyan-400/10 shadow-[0_-8px_30px_rgba(0,0,0,0.5)]">
+<button class="text-zinc-400 p-3 hover:text-cyan-300 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">home</span>
+</button>
+<button class="text-zinc-400 p-3 hover:text-cyan-300 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-zinc-400 p-3 hover:text-cyan-300 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<button class="bg-cyan-400/10 text-cyan-400 rounded-2xl p-3 shadow-[0_0_10px_rgba(0,240,255,0.3)] active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</button>
+<button class="text-zinc-400 p-3 hover:text-cyan-300 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">person</span>
+</button>
+</nav>
+</body></html>
