@@ -2,34 +2,81 @@ import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import React from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { MLButton } from '@/components/ui/MLButton';
 import { Product } from '@/components/ui/MLProductCard';
 import { Colors, Metrics, Typography } from '@/constants/theme';
+import { supabase } from '@/utils/supabase';
 
-// MOCK: Idealmente esto vendría de Supabase filtrando por ID.
-const MOCK_PRODUCTS: Record<string, Product & { description: string, seller: string }> = {
-  '1': { id: '1', title: 'iPhone 13 Pro 128GB - Como nuevo', price: 950000, imageUrl: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=600&auto=format&fit=crop', description: 'Batería al 90%. Ningún detalle estético. Se entrega en caja con cable original sin uso. Libre de fábrica.', seller: 'Santiago M.' },
-  '2': { id: '2', title: 'MacBook Air M1 256GB Space Gray', price: 1250000, imageUrl: 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=600&auto=format&fit=crop', description: 'Ciclos de batería: 140. Impecable estado, uso exclusivo de oficina. Incluye cargador 30W.', seller: 'Lucía G.' },
-  '3': { id: '3', title: 'Silla Gamer DXRacer Blanca/Rosa', price: 210000, imageUrl: 'https://images.unsplash.com/photo-1598550476439-6847785fcea6?q=80&w=600&auto=format&fit=crop', description: 'Mecanismo reclinable 135 grados. Almohadón lumbar y cervical. Tiene un pequeño raspón en el apoyabrazos izquierdo.', seller: 'Camila T.' },
-  '4': { id: '4', title: 'Auriculares Sony WH-1000XM4 Noise Cancelling', price: 340000, imageUrl: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?q=80&w=600&auto=format&fit=crop', description: 'Cancelación de sonido líder en la industria. Funciona perfecto, las almohadillas fueron reemplazadas hace 1 mes.', seller: 'Marcos R.' },
-  '5': { id: '5', title: 'PlayStation 5 con 2 Joysticks y Garantía', price: 890000, imageUrl: 'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?q=80&w=600&auto=format&fit=crop', description: 'Versión con lectora de discos. Incluye dos DualSense originales y un cable Tipo C largo de regalo.', seller: 'Javier P.' },
+// Extensión del tipo Product para incluir descripción y vendedor real
+type ProductDetail = Product & {
+  description: string;
+  seller_email: string;
+  seller_avatar: string;
 };
 
 export default function ProductDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
 
-  const product = id ? MOCK_PRODUCTS[id] : null;
+  const [product, setProduct] = useState<ProductDetail | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProductDetails = async () => {
+      setIsLoading(true);
+      try {
+        // Pedimos los datos del producto
+        const { data, error } = await supabase
+          .from('products')
+          .select('*')
+          .eq('id', id)
+          .single();
+
+        if (error) throw error;
+
+        if (data) {
+          // Buscamos los metadatos del usuario logueado en google a través de una función o si tuvieramos la relación armada. 
+          // Por el momento, extraemos un nombre provisorio de su UUID o si tenemos acceso a una tabla profile.
+          // NOTA: 'auth.users' no expone metadata a usuarios anonimos facilmente, así que lo simulamos con UUID temporalmente.
+          setProduct({
+            id: data.id,
+            title: data.title,
+            price: data.price,
+            description: data.description,
+            imageUrl: data.image_url || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop',
+            seller_email: 'Usuario #' + data.user_id.substring(0, 5), // Provisorio
+            seller_avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=150&auto=format&fit=crop'
+          });
+        }
+      } catch (err: any) {
+        Alert.alert('Error', 'No se pudo cargar el producto.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    if (id) {
+      fetchProductDetails();
+    }
+  }, [id]);
+
+  if (isLoading) {
+    return (
+      <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
+        <ActivityIndicator size="large" color={Colors.primary} />
+      </View>
+    );
+  }
 
   if (!product) {
     return (
       <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
         <Text style={styles.notFoundText}>Producto no encontrado</Text>
-        <MLButton title="Volver al Home" onPress={() => router.back()} />
+        <MLButton title="Volver al inicio" onPress={() => router.back()} />
       </View>
     );
   }
@@ -76,10 +123,10 @@ export default function ProductDetailScreen() {
           <Text style={styles.price}>${product.price.toLocaleString('es-AR')}</Text>
           
           <View style={styles.sellerSurface}>
-            <View style={styles.sellerAvatar} />
+            <Image source={{ uri: product.seller_avatar }} style={styles.sellerAvatar} contentFit={"cover"} />
             <View>
               <Text style={styles.sellerLabel}>Vendido por</Text>
-              <Text style={styles.sellerName}>{product.seller}</Text>
+              <Text style={styles.sellerName}>{product.seller_email}</Text>
             </View>
           </View>
 

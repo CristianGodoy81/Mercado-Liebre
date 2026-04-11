@@ -1,9 +1,9 @@
+import { decode } from 'base64-arraybuffer';
+import * as ImagePicker from 'expo-image-picker';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
-import { Alert, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+import { Alert, Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import * as ImagePicker from 'expo-image-picker';
-import { decode } from 'base64-arraybuffer';
 
 import { MLButton } from '@/components/ui/MLButton';
 import { MLInput } from '@/components/ui/MLInput';
@@ -139,7 +139,7 @@ export default function PublishScreen() {
       setImage(null);
       
       // Volver a inicio
-      router.replace('/(tabs)/');
+      router.replace('/(tabs)');
     } catch (e: any) {
       console.error("Error general en handlePublish:", e);
       Alert.alert('Error al publicar', e.message || 'Ocurrió un error desconocido.');
