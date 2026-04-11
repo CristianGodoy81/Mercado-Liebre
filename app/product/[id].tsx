@@ -9,6 +9,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { MLButton } from '@/components/ui/MLButton';
 import { Product } from '@/components/ui/MLProductCard';
 import { Colors, Metrics, Typography } from '@/constants/theme';
+import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/utils/supabase';
 
 // Extensión del tipo Product para incluir descripción y vendedor real
@@ -16,14 +17,17 @@ type ProductDetail = Product & {
   description: string;
   seller_email: string;
   seller_avatar: string;
+  seller_id: string;
 };
 
 export default function ProductDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
-
+  const { user } = useAuth();
+  
   const [product, setProduct] = useState<ProductDetail | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isCreatingChat, setIsCreatingChat] = useState(false);
 
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -39,17 +43,22 @@ export default function ProductDetailScreen() {
         if (error) throw error;
 
         if (data) {
-          // Buscamos los metadatos del usuario logueado en google a través de una función o si tuvieramos la relación armada. 
-          // Por el momento, extraemos un nombre provisorio de su UUID o si tenemos acceso a una tabla profile.
-          // NOTA: 'auth.users' no expone metadata a usuarios anonimos facilmente, así que lo simulamos con UUID temporalmente.
+          // Obtenemos los datos públicos del perfil del vendedor
+          const { data: profileData } = await supabase
+            .from('profiles')
+            .select('email, avatar_url')
+            .eq('id', data.user_id)
+            .single();
+
           setProduct({
             id: data.id,
             title: data.title,
             price: data.price,
             description: data.description,
             imageUrl: data.image_url || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop',
-            seller_email: 'Usuario #' + data.user_id.substring(0, 5), // Provisorio
-            seller_avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=150&auto=format&fit=crop'
+            seller_id: data.user_id,
+            seller_email: profileData?.email || 'Usuario de Mercado Liebre',
+            seller_avatar: profileData?.avatar_url || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=150&auto=format&fit=crop'
           });
         }
       } catch (err: any) {
@@ -81,9 +90,58 @@ export default function ProductDetailScreen() {
     );
   }
 
-  const handleContactSeller = () => {
-    // Aquí abriríamos el chat con el vendedor
-    router.push('/(tabs)/chats');
+  const handleContactSeller = async () => {
+    if (!user) {
+      Alert.alert('Inicia sesión', 'Debes iniciar sesión para contactar al vendedor.');
+      return;
+    }
+
+    if (user.id === product.seller_id) {
+      Alert.alert('Atención', 'No puedes iniciar un chat contigo mismo.');
+      return;
+    }
+
+    setIsCreatingChat(true);
+
+    try {
+      // 1. Verificar si ya existe un chat para este producto y comprador
+      const { data: existingChat, error: existingError } = await supabase
+        .from('chats')
+        .select('id')
+        .eq('product_id', product.id)
+        .eq('buyer_id', user.id)
+        .maybeSingle();
+
+      if (existingError && existingError.code !== 'PGRST116') {
+        throw existingError;
+      }
+
+      let chatId = existingChat?.id;
+
+      // 2. Si no existe, creamos uno nuevo
+      if (!chatId) {
+        const { data: newChat, error: createError } = await supabase
+          .from('chats')
+          .insert({
+            product_id: product.id,
+            buyer_id: user.id,
+            seller_id: product.seller_id
+          })
+          .select('id')
+          .single();
+
+        if (createError) throw createError;
+        chatId = newChat.id;
+      }
+
+      // 3. Dirigimos a la pantalla del chat
+      router.push(`/chat/${chatId}`);
+    } catch (error: any) {
+      console.error(error);
+      Alert.alert('Error', 'No se pudo iniciar el chat: ' + error.message);
+    } finally {
+      setIsCreatingChat(false);
+    }
   };
 
   return (
@@ -146,8 +204,9 @@ export default function ProductDetailScreen() {
         />
         <View style={styles.footerContent}>
           <MLButton 
-            title="Contactar al Vendedor" 
+            title={isCreatingChat ? "Iniciando Chat..." : "Contactar al Vendedor"} 
             onPress={handleContactSeller} 
+            disabled={isCreatingChat}
             style={styles.mainAction} 
           />
         </View>
