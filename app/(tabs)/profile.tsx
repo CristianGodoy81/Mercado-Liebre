@@ -2,10 +2,12 @@ import { MLButton } from '@/components/ui/MLButton';
 import { Colors, Typography } from '@/constants/theme';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/utils/supabase';
+import { useRouter } from 'expo-router';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
 export default function ProfileScreen() {
   const { user } = useAuth();
+  const router = useRouter();
 
   // Los proveedores OAuth como Google guardan de la foto de perfil en user_metadata
   const avatarUrl = user?.user_metadata?.avatar_url;
@@ -24,8 +26,17 @@ export default function ProfileScreen() {
       {/* Mostramos el email de la cuenta */}
       <Text style={styles.emailText}>{email}</Text>
 
-      <View style={{ marginTop: 40}}>
-        <MLButton title="Cerrar Sesión" variant="secondary" onPress={() => supabase.auth.signOut()} />
+      <View style={{ marginTop: 40, gap: 16 }}>
+        <MLButton 
+          title="Mis Publicaciones" 
+          onPress={() => router.push('/my-products')} 
+        />
+
+        <MLButton 
+          title="Cerrar Sesión" 
+          variant="secondary" 
+          onPress={() => supabase.auth.signOut()} 
+        />
       </View>
     </View>
   );
