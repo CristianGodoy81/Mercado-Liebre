@@ -6,11 +6,14 @@ import { Alert, Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, T
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { MLButton } from '@/components/ui/MLButton';
+import { MLChip } from '@/components/ui/MLChip';
 import { MLInput } from '@/components/ui/MLInput';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors, Metrics, Typography } from '@/constants/theme';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/utils/supabase';
+
+const CATEGORIES = ['Tecnología', 'Ropa', 'Hogar', 'Deportes', 'Vehículos', 'Otros'];
 
 export default function PublishScreen() {
   const router = useRouter();
@@ -19,6 +22,7 @@ export default function PublishScreen() {
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
+  const [category, setCategory] = useState('Otros');
   const [image, setImage] = useState<ImagePicker.ImagePickerAsset | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -120,6 +124,7 @@ export default function PublishScreen() {
           title,
           price: priceNumber,
           description,
+          category,
           image_url: imageUrl, // Aquí guardamos el enlace
           user_id: user.id
         });
@@ -136,6 +141,7 @@ export default function PublishScreen() {
       setTitle('');
       setPrice('');
       setDescription('');
+      setCategory('Otros');
       setImage(null);
       
       // Volver a inicio
@@ -192,6 +198,21 @@ export default function PublishScreen() {
               onChangeText={setPrice}
               keyboardType="numeric"
             />
+          </View>
+
+          <View style={styles.formGroup}>
+            <Text style={styles.label}>Categoría</Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              {CATEGORIES.map((cat, idx) => (
+                <View key={cat} style={{ marginRight: Metrics.spacing.sm }}>
+                  <MLChip 
+                    label={cat} 
+                    isActive={category === cat}
+                    onPress={() => setCategory(cat)}
+                  />
+                </View>
+              ))}
+            </ScrollView>
           </View>
 
           <View style={styles.formGroup}>

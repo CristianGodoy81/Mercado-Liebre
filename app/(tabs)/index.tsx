@@ -39,6 +39,7 @@ export default function HomeScreen() {
           title: item.title,
           price: item.price,
           description: item.description,
+          category: item.category || 'Otros',
           imageUrl: item.image_url || 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600&auto=format&fit=crop', // Imagen por defecto si no tiene
         }));
         setProducts(formattedProducts);
@@ -53,6 +54,25 @@ export default function HomeScreen() {
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  // Filtramos los productos "En Vivo" (Client-side)
+  const filteredProducts = React.useMemo(() => {
+    return products.filter(item => {
+      // 1. Filtro por barra de búsqueda
+      const searchLower = searchQuery.toLowerCase();
+      const matchesSearch = 
+        item.title.toLowerCase().includes(searchLower) || 
+        (item.description && item.description.toLowerCase().includes(searchLower));
+
+      // 2. Filtro por Categorías
+      // Ahora usamos la columna "category" real de la base de datos
+      const matchesCategory = 
+        activeCategory === 'Todos' || 
+        (item.category && item.category === activeCategory);
+
+      return matchesSearch && matchesCategory;
+    });
+  }, [products, searchQuery, activeCategory]);
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
@@ -90,15 +110,20 @@ export default function HomeScreen() {
 
         {/* Grilla de productos sugeridos */}
         <View style={styles.gridContainer}>
-          <Text style={styles.sectionTitle}>Recomendados para vos</Text>
+          <Text style={styles.sectionTitle}>
+            {searchQuery ? `Resultados de "${searchQuery}"` : 'Recomendados para vos'}
+          </Text>
           
           {isLoading ? (
             <ActivityIndicator size="large" color={Colors.primary} style={{ marginTop: 40 }} />
-          ) : products.length === 0 ? (
-            <Text style={{ color: Colors.onSurfaceVariant, padding: 20 }}>Aún no hay productos publicados.</Text>
+          ) : filteredProducts.length === 0 ? (
+            <View style={styles.emptyContainer}>
+              <Text style={styles.emptyTitle}>Sin resultados 🕵️‍♂️</Text>
+              <Text style={styles.emptyText}>No encontramos nada que coincida con tu búsqueda o filtro actual. ¡Intenta con otra palabra!</Text>
+            </View>
           ) : (
             <View style={styles.grid}>
-              {products.map(item => (
+              {filteredProducts.map(item => (
                 <View key={item.id} style={styles.gridItem}>
                   <MLProductCard 
                     product={item} 
@@ -165,5 +190,23 @@ const styles = StyleSheet.create({
   gridItem: {
     width: '48%', // Dos columnas simuladas dejando un 4% de gutter en medios
     marginBottom: Metrics.spacing.md,
+  },
+  emptyContainer: {
+    marginTop: 40,
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
+  emptyTitle: {
+    fontFamily: Typography.fonts.title,
+    fontSize: 20,
+    color: Colors.onSurface,
+    marginBottom: 8,
+  },
+  emptyText: {
+    fontFamily: Typography.fonts.body,
+    fontSize: 14,
+    color: Colors.onSurfaceVariant,
+    textAlign: 'center',
+    lineHeight: 20,
   },
 });

@@ -9,6 +9,8 @@ export interface Product {
   title: string;
   price: number;
   imageUrl: string;
+  category?: string;
+  description?: string;
 }
 
 interface MLProductCardProps {
@@ -30,7 +32,7 @@ export function MLProductCard({ product, onPress }: MLProductCardProps) {
       <View style={styles.imageContainer}>
         {/* Placeholder gradient simulando glass & gradient light reflection (esquina sup) */}
         <LinearGradient
-          colors={[Colors.primaryVariant || 'rgba(143,245,255,0.1)', 'transparent']}
+          colors={['rgba(143,245,255,0.1)', 'transparent']}
           start={{ x: 0, y: 0 }}
           end={{ x: 0.5, y: 0.5 }}
           style={StyleSheet.absoluteFillObject}
