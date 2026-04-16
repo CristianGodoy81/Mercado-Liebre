@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { StyleSheet, TextInput, TextInputProps, View } from 'react-native';
 import { Colors, Metrics, Typography } from '../../constants/theme';
 
-export function MLInput({ style, ...props }: TextInputProps) {
+export interface MLInputProps extends TextInputProps {
+  containerStyle?: import('react-native').ViewStyle;
+}
+
+export function MLInput({ style, containerStyle, ...props }: MLInputProps) {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
@@ -10,11 +14,11 @@ export function MLInput({ style, ...props }: TextInputProps) {
       style={[
         styles.container,
         isFocused && styles.focusedContainer,
-        style,
+        containerStyle,
       ]}
     >
       <TextInput
-        style={styles.input}
+        style={[styles.input, style]}
         placeholderTextColor={Colors.onSurfaceVariant}
         onFocus={(e) => {
           setIsFocused(true);

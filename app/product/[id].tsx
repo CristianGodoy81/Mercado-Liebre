@@ -3,7 +3,7 @@ import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Alert, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { MLButton } from '@/components/ui/MLButton';
@@ -91,16 +91,29 @@ export default function ProductDetailScreen() {
   }
 
   const handleContactSeller = async () => {
+    console.log("handleContactSeller: Invocado");
+    
     if (!user) {
-      Alert.alert('Inicia sesión', 'Debes iniciar sesión para contactar al vendedor.');
+      console.log("No hay usuario, mostrando alerta...");
+      if (Platform.OS === 'web') {
+        window.alert('Debes iniciar sesión para contactar al vendedor.');
+      } else {
+        Alert.alert('Inicia sesión', 'Debes iniciar sesión para contactar al vendedor.');
+      }
       return;
     }
 
     if (user.id === product.seller_id) {
-      Alert.alert('Atención', 'No puedes iniciar un chat contigo mismo.');
+      console.log("El usuario es el vendedor, mostrando alerta...");
+      if (Platform.OS === 'web') {
+        window.alert('No puedes iniciar un chat contigo mismo.');
+      } else {
+        Alert.alert('Atención', 'No puedes iniciar un chat contigo mismo.');
+      }
       return;
     }
 
+    console.log("Iniciando creación de chat...");
     setIsCreatingChat(true);
 
     try {
@@ -135,10 +148,15 @@ export default function ProductDetailScreen() {
       }
 
       // 3. Dirigimos a la pantalla del chat
+      console.log("Navegando a la pantalla del chat con ID:", chatId);
       router.push(`/chat/${chatId}`);
     } catch (error: any) {
-      console.error(error);
-      Alert.alert('Error', 'No se pudo iniciar el chat: ' + error.message);
+      console.error("Error capturado en handleContactSeller:", error);
+      if (Platform.OS === 'web') {
+        window.alert('No se pudo iniciar el chat: ' + error.message);
+      } else {
+        Alert.alert('Error', 'No se pudo iniciar el chat: ' + error.message);
+      }
     } finally {
       setIsCreatingChat(false);
     }
@@ -161,6 +179,7 @@ export default function ProductDetailScreen() {
             colors={['rgba(14,14,16,0.6)', 'transparent', Colors.background]}
             style={StyleSheet.absoluteFillObject}
             locations={[0, 0.5, 1]}
+            pointerEvents="none"
           />
 
           {/* Botón Flotante para Volver Atrás */}
@@ -201,6 +220,7 @@ export default function ProductDetailScreen() {
         <LinearGradient
            colors={['transparent', Colors.background]}
            style={styles.stickyGradient}
+           pointerEvents="none"
         />
         <View style={styles.footerContent}>
           <MLButton 
@@ -331,6 +351,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
+    zIndex: 10,
+    elevation: 20,
   },
   stickyGradient: {
     height: 40,

@@ -6,15 +6,15 @@ import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
 import {
-    ActivityIndicator,
-    KeyboardAvoidingView,
-    Platform,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -56,8 +56,8 @@ export default function ChatScreen() {
           .single();
 
         setChatInfo({
-          productTitle: chatData.products?.title || 'Producto',
-          productImage: chatData.products?.image_url,
+          productTitle: (chatData.products as any)?.title || 'Producto',
+          productImage: (chatData.products as any)?.image_url,
           otherUserEmail: profileData?.email || 'Usuario',
           otherUserAvatar: profileData?.avatar_url,
         });
